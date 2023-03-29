@@ -7,7 +7,7 @@ const MovieDetails = () => {
   // useEffect(() => {
   // HTTP запрос, если нужно
   // }, [])
-
+  // https://api.themoviedb.org/3/movie/550?api_key=f907ec6f235cb6bab9021d7ee76a1e81
   return (
     <>
     <button>&#8592; Go back</button>
