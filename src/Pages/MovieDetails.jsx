@@ -1,16 +1,21 @@
-
-import { Link, Outlet, useParams } from 'react-router-dom';
+// import { Suspense, useRef } from 'react';
+import { useRef } from 'react';
+import { Link, Outlet, useParams, useLocation } from 'react-router-dom';
 
 const MovieDetails = () => {
+  const location = useLocation();
+  const backLinkLocationRef = useRef(location?.state?.from ?? '/movies');
   const { movieId } = useParams();
+  console.log(movieId);
 
   // useEffect(() => {
   // HTTP запрос, если нужно
   // }, [])
-  // https://api.themoviedb.org/3/movie/550?api_key=f907ec6f235cb6bab9021d7ee76a1e81
+  
   return (
     <>
-    <button>&#8592; Go back</button>
+    <Link to={backLinkLocationRef.current}
+    >&#8592; Go back</Link>
       <h1>MovieDetails: {movieId}</h1>
       <ul>
         <li>
