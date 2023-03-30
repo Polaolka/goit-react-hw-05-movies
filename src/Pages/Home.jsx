@@ -13,12 +13,13 @@ const Home = () => {
   useEffect(() => {
     setIsMoviesLoading(true);
     async function fetchData() {
-      window.scrollTo(0, 0);
       const response = await fetchTrendingMovies(page);
       console.log(response);
-      setMovies(s => [...response.movies]);
+      if (page === 1) {
+        setMovies(s => [...response.movies]);
+      } else
+      setMovies(s => [...s, ...response.movies]);
       setTotalPage(response.totalPage);
-      console.log(response.movies);
       setIsMoviesLoading(false);
       setTotalPage(response.totalPage);
       if (page === response.totalPage && response.totalPage > 1)

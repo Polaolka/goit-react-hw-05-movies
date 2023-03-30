@@ -8,7 +8,7 @@ export const LoadMoreBtn = ({onloadMore}) => {
     
   return (
     <button className={css.loadMoreBtn} type="button" onClick={onloadMore}>
-      Next trending movies
+      Load more
     </button>
   );
 }
