@@ -10,8 +10,6 @@ const Movies = () => {
   const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
   const [isMoviesLoading, setIsMoviesLoading] = useState(false);
-  const [page, setPage] = useState(1);
-  // const [totalPage, setTotalPage] = useState(0);
   const queryName = searchParams.get('query') ?? '';
 
 
@@ -20,19 +18,14 @@ const Movies = () => {
     console.log(queryName);
       setIsMoviesLoading(true);
       async function fetchData() {
-        const response = await fetchMoviesByName(page, queryName);
+        const response = await fetchMoviesByName(queryName);
         console.log(response);
         setMovies(s => [...response.movies]);
-        // setTotalPage(response.totalPage);
         console.log(response.movies);
         setIsMoviesLoading(false);
-    
-      //   setTotalPage(response.totalPage);
-      //   if (page === response.totalPage && response.totalPage > 1)
-      //     toast(`this is the last page`);
       }
       fetchData();
-    }, [queryName, page]);
+    }, [queryName]);
 
   const handleFormSubmit = (queryName) => {
     console.log(queryName);

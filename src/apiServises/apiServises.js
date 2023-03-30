@@ -24,17 +24,13 @@ export async function fetchTrendingMovies (page) {
   } catch (error) {console.log(error.message);}
 }
 
-export async function fetchMoviesByName (page, query) {
-  const url = `${URL_BY_NAME}?api_key=${API_KEY}&query=${query}&language=en-US&page=${page}`;
+export async function fetchMoviesByName (query) {
+  const url = `${URL_BY_NAME}?api_key=${API_KEY}&query=${query}&language=en-US`;
   try {
     const response = await axios.get(`${url}`);
-    // console.log(response);
-    // const totalMovie = response.data.totalHits;
     const movies = response.data.results;
-    const totalPage = response.data.total_pages;
-    return { movies, totalPage };
-    // return response.data;
-    
+    return { movies };
+   
   } catch (error) {console.log(error.message);}
 }
 
