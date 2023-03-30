@@ -1,7 +1,5 @@
-import { useEffect, useRef } from 'react';
-import { useParams, useLocation, Link } from 'react-router-dom';
-import { Loader } from '../../components/Loader/Loader';
-import { fetchMoviesById } from '../../apiServises/apiServises';
+import {  useRef } from 'react';
+import {  Link } from 'react-router-dom';
 import { LinkStyled, Wrapper, Line } from './MovieInfo.styled';
 
 const MovieInfo = ({ movie, location }) => {
