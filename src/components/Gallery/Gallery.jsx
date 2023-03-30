@@ -7,7 +7,7 @@ import css from '../Gallery/Gallery.module.css';
 export const Gallery = ({movies}) => {
   return (
 <div className={css.container}>
-        <ul className={css.gallery}>
+        <div className={css.gallery}>
           {movies &&
             movies.map(({ id, backdrop_path, original_title, popularity, release_date }) => (
               <FilmGalleryItem
@@ -22,7 +22,7 @@ export const Gallery = ({movies}) => {
                 popularity={popularity}
               />
             ))}
-        </ul>
+        </div>
 
       </div>
   );

@@ -1,28 +1,43 @@
+import { Suspense } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import styled from 'styled-components';
+import { Loader } from '../Loader/Loader';
+import { Header, UlNav } from './Layout.styled';
+import { BiCameraMovie } from 'react-icons/bi';
+import { FiHome } from 'react-icons/fi';
+
 
 const StyledLink = styled(NavLink)`
-  color: #212121;
+  font-size: 24px;
+  color: #320e0e;
+  text-decoration: none;
   &.active {
-    color: #542bd0;
+    color: #ffffff;
+    
   }
 `;
 
 const Layout = () => {
   return (
     <>
-      <header>
-        <ul>
+      <Header>
+        <UlNav>
           <li>
-            <StyledLink to="/">Home</StyledLink>
+            <StyledLink to="/">
+              <FiHome/>  Home
+              </StyledLink>
           </li>
           <li>
-            <StyledLink to="/movies">Movies</StyledLink>
+            <StyledLink to="/movies">
+            <BiCameraMovie/>  Movies
+              </StyledLink>
           </li>
-        </ul>
-      </header>
+        </UlNav>
+      </Header>
       <main>
-        <Outlet />
+        <Suspense fallback={<Loader />}>
+          <Outlet />
+        </Suspense>
       </main>
     </>
   );

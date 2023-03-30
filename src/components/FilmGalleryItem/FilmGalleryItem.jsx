@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 // import PropTypes from 'prop-types';
 import css from '../FilmGalleryItem/FilmGalleryItem.module.css';
 
@@ -10,7 +12,7 @@ export const FilmGalleryItem = ({
   release_date
 }) => {
   return (
-    <li className={css.galleryItem} id={id} >
+    <Link to={`/movies/${id}`} className={css.galleryItem} id={id} >
       <img
         className={css.galleryImage}
         src={`https://image.tmdb.org/t/p/w500${backdrop_path}`}
@@ -23,7 +25,7 @@ export const FilmGalleryItem = ({
         <div>release date: {release_date}</div>
         <div>Popularity: {popularity}</div>
         </div>
-    </li>
+    </Link>
   );
 };
 // onClick={onClickImg}
