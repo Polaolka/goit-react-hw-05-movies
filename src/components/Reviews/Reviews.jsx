@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Loader } from '../Loader/Loader';
 import { fetchMovieReviews } from '../../apiServises/apiServises';
 import { Container } from '../Container/Container';
@@ -7,7 +7,7 @@ const Rewiews = () => {
   const { movieId } = useParams();
   const [isMoviesLoading, setIsMoviesLoading] = useState(true);
   const [reviews, setReviews] = useState(null);
-  const location = useLocation();
+  // const location = useLocation();
   // const backLinkLocationRef = useRef(location?.state?.from ?? '/movies')
 
   useEffect(() => {
