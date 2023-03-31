@@ -1,12 +1,26 @@
 import axios from 'axios';
 
 const API_KEY = 'f907ec6f235cb6bab9021d7ee76a1e81';
-const BASE_URL = 'https://api.themoviedb.org/3/trending/movie/week';
+const BASE_URL_WEEK = 'https://api.themoviedb.org/3/trending/movie/week';
+const BASE_URL_DAY = 'https://api.themoviedb.org/3/trending/movie/day';
 const URL_BY_ID = 'https://api.themoviedb.org/3/movie/';
 const URL_BY_NAME = 'https://api.themoviedb.org/3/search/movie';
 
-export async function fetchTrendingMovies(page) {
-  const url = `${BASE_URL}?api_key=${API_KEY}&page=${page}`;
+export async function fetchTrendingMoviesDay(page) {
+  const url = `${BASE_URL_DAY}?api_key=${API_KEY}&page=${page}`;
+  try {
+    const response = await axios.get(`${url}`);
+    const movies = response.data.results;
+    const totalPage = response.data.total_pages;
+    return { movies, totalPage };
+
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
+export async function fetchTrendingMoviesWeek(page) {
+  const url = `${BASE_URL_WEEK}?api_key=${API_KEY}&page=${page}`;
   try {
     const response = await axios.get(`${url}`);
     const movies = response.data.results;

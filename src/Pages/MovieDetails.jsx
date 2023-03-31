@@ -26,6 +26,7 @@ const MovieDetails = () => {
   return (
     <>
       <Container>
+        
         <MovieInfo movie={movie} location={location} />
 
         <Suspense fallback={<Loader />}>
