@@ -12,6 +12,7 @@ const MovieDetails = () => {
   const { movieId } = useParams();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     async function fetchData() {
       const response = await fetchMoviesById(movieId);
       setMovie(response.movie);
