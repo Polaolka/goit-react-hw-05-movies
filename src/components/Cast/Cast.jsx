@@ -4,17 +4,14 @@ import { Loader } from '../Loader/Loader';
 import { fetchMovieCasts } from '../../apiServises/apiServises';
 import { Container } from '../Container/Container';
 import css from '../Cast/Cast.module.css';
-import UserSymbol from './UserSymbol.png';
+import UserSymbol from '../../Img/UserSymbol.png';
 
 const Cast = () => {
   const { movieId } = useParams();
   const [isMoviesLoading, setIsMoviesLoading] = useState(true);
   const [casts, setCasts] = useState(null);
-  // const location = useLocation();
-  // const backLinkLocationRef = useRef(location?.state?.from ?? '/movies')
 
   useEffect(() => {
-    // setIsMoviesLoading(true);
     async function fetchData() {
       const response = await fetchMovieCasts(movieId);
       setCasts(response);
@@ -25,11 +22,13 @@ const Cast = () => {
   if (isMoviesLoading) {
     return <Loader />;
   }
+  if (casts.length === 0) {
+    return <div className={css.noInfo}>There is no information</div>;
+  }
   return (
     <Container>
       <ul className={css.galleryWrapper}>
         {casts.map(cast => {
-          console.log(cast.profile_path);
           return (
             <li className={css.galleryItem} key={`${cast.credit_id}`}>
               <img
@@ -54,16 +53,3 @@ const Cast = () => {
 };
 
 export default Cast;
-
-// character : "Scott Lang / Ant-Man"
-// credit_id
-// :
-// "5da88f43a2423200177bf176"
-
-// original_name
-// :
-// "Paul Rudd"
-
-// profile_path
-// :
-// "/8eTtJ7XVXY0BnEeUaSiTAraTIXd.jpg"

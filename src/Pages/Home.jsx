@@ -14,7 +14,6 @@ const Home = () => {
     setIsMoviesLoading(true);
     async function fetchData() {
       const response = await fetchTrendingMovies(page);
-      console.log(response);
       if (page === 1) {
         setMovies(s => [...response.movies]);
       } else

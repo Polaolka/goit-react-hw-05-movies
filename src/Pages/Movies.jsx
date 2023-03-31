@@ -14,20 +14,17 @@ const Movies = () => {
   const queryName = searchParams.get('query') ?? '';
 
   useEffect(() => {
-    if (queryName === '') return;
-    console.log(queryName);
+    if (queryName === '') setMovies([]);
     setIsMoviesLoading(true);
     async function fetchData() {
       const response = await fetchMoviesByName(queryName);
       setMovies(s => [...response.movies]);
-      console.log(response.movies);
       setIsMoviesLoading(false);
     }
     fetchData();
   }, [queryName]);
 
   const handleFormSubmit = queryName => {
-    console.log(queryName);
     if (queryName === '') {
       return setSearchParams({});
     }

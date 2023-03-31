@@ -1,7 +1,7 @@
 import { useState } from 'react';
 // import PropTypes from 'prop-types';
 import css from '../SearchForm/SearchForm.module.css';
-import { FcSearch } from 'react-icons/fc';
+import { AiOutlineSearch } from 'react-icons/ai';
 import { IconContext } from 'react-icons';
 
 export const SearchForm = ({ onSubmit }) => {
@@ -29,7 +29,7 @@ export const SearchForm = ({ onSubmit }) => {
       />
       <button type="submit">
         <IconContext.Provider value={{ size: '25px' }}>
-          <FcSearch />
+          <AiOutlineSearch />
         </IconContext.Provider>
       </button>
     </form>
